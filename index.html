@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>35
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+            width: fit-content;
+            margin:50px auto;
+            position: relative;
+        }
+        .slide{
+            height: 300px;
+            width:300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .action-icon{
+            height: 50px;
+            position: absolute;
+            top: 40%;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .left-icon{
+            left: 0;
+        }
+        .left-icon:hover{
+            transform: scale(0.5) translateX(-10px);
+
+        }
+        .right-icon{
+            right: 0;
+        
+        }
+        .right-icon:hover{
+            transform: scale(0.5) translateX(10px);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="dog.avif" class="slide" id="slide"/>
+        <img src="arrow.png" class= "action-icon left-icon" onclick="prev()"/>
+        <img src="next.png" class= "action-icon right-icon" onclick="next()"/>
+
+
+    </div>
+    <script>
+        const images =[ "cat-1.jpg","cat.jpg","dog-1.jpg","cow.webp","cow-1.jpg","horse.jpg"];
+        let index = 0;
+        const slide = document.getElementById('slide');
+
+
+        function next(){
+            if(index < images.length-1){
+                index++;
+            }
+            else{
+                index = 0;
+            }
+            
+            slide.src = images[index]
+}
+
+   function prev(){
+            if(index>0){
+                index--;
+            }
+            else{
+                index = images.length -1;
+            }
+            slide.src = images[index]
+}
+setInterval(next,5000);
+
+
+    </script>
+</body>
+</html>
